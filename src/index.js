@@ -8,10 +8,13 @@ import App from './components/App';
 import rootReducer from './reducers';
 import rootEpic from './epics';
 
+// Creates a middleware that accepts the root Epic (similar to root reducer)
 const epicMiddleware = createEpicMiddleware();
 
+// Apply that middleware created so that it will fit into the redux flow
 const store = applyMiddleware(epicMiddleware)(createStore)(rootReducer);
 
+// Listen to rootEpic (only after store created and middleware attached)
 epicMiddleware.run(rootEpic);
 
 render(
