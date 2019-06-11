@@ -34,7 +34,7 @@ export function filterPetEpic(action$, state$) {
         // debounceTime(2000),
         // throttleTime(5000),
         // skip(2),
-        map( action => state$.value.petReducer.petList.filter( pet => (pet.name.indexOf(action.payload) !== -1))),
+        map( action => state$.value.petReducer.petList.filter( pet => pet.name && (pet.name.indexOf(action.payload) !== -1))),
         map( petList => petActions.setPets(petList))
     )
 }
